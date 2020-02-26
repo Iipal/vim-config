@@ -21,6 +21,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 let g:ctrlp_working_path_mode='raw'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_working_path_mode = 0
 
 "Saving last position at any file
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -46,14 +47,8 @@ set tags+=~/.vim/tags
 "Ctrl-\ - Open the definition in a new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-
-" Put these in an autocmd group, so that we can delete them easily.
-augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=80
-augroup END
+" For all files set 'textwidth' to 78 characters.
+set textwidth=80
 
 " Add optional packages.
 "
