@@ -6,12 +6,16 @@ sudo dnf install ctags
 echo " Installing vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+echo " Generating default tags via Ctags"
+mkdir -p ~/.vim
+ctags -R --c-kinds=+p --fields=+S /usr/include
+mv tags ~/.vim/tags
+
 # copy a vimrc file
 echo " Copying ./.vimrc"
 cp ./.vimrc ~/.vimrc
 
 echo " Installing plugins"
-mkdir -p ~/.vim
 mkdir -p ~/.vim/bundle
 mkdir -p ~/.vim/plugin
 # copy a manualy installed plugins such as:
